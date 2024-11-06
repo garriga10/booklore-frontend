@@ -29,7 +29,7 @@ with pcols[0]:
     st.markdown("*Find book recommendations inspired by your chosen title*")
     with st.form('test'):
         # Create two columns reduce space of search bar
-        qcol1, qcol2, qcol3 = st.columns([6, 1, 1])
+        qcol1, qcol2, qcol3 = st.columns([5, 1, 1])
 
         with qcol1:
             # Text input for title search

@@ -20,7 +20,7 @@ if 'search_text_input' not in st.session_state:
     st.session_state['search_text_input'] = ''
 
 # Create 2 columns in the page
-pcols = st.columns([6, 1])
+pcols = st.columns([5, 1])
 
 with pcols[0]:
     # Set title and subtitle of the page
@@ -30,15 +30,9 @@ with pcols[0]:
     # Create a search form
     with st.form('searchbar'):
         # Create 4 columns to have all the inputs in one line
-        qcol1, qcol2, qcol3, qcol4 = st.columns([2, 5, 1, 1])
+        qcol1, qcol2, qcol3 = st.columns([5, 1, 1])
 
         with qcol1:
-            search_option = st.selectbox(
-                "Search by",
-                ("Title", "Author"),
-                label_visibility= 'collapsed',
-            )
-        with qcol2:
             # Text input for title search
             text = f"Enter text to search"
             query = st.text_input(
@@ -47,9 +41,9 @@ with pcols[0]:
                 label_visibility= 'collapsed',
                 key= 'search_text_input'
             )
-        with qcol3:
+        with qcol2:
             search_button = st.form_submit_button("Search", type= 'primary')
-        with qcol4:
+        with qcol3:
             clear_button = st.form_submit_button("Clear", on_click= clear_search, type= 'primary')
 
         result = st.empty()

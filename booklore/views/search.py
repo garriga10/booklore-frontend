@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-from booklore.utils.utils import fetch_api_books, add_to_library
+from utils.utils import fetch_api_books, add_to_library
 
 # Read API url from secrets
 API_URL = st.secrets['API_URL']

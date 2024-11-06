@@ -1,5 +1,5 @@
 import streamlit as st
-from booklore.utils.utils import background_image_style
+from utils.utils import background_image_style
 
 st.set_page_config(
     layout= "wide",

@@ -36,7 +36,7 @@ def add_to_library(book_id):
         st.warning("This book is already in your library.")
 
 
-@st.cache_data
+#@st.cache_data
 def load_image(path):
     with open(path, 'rb') as f:
         data = f.read()

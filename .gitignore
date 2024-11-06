@@ -1,0 +1,37 @@
+.python-version
+.streamlit/secrets.toml
+booklore_app.egg-info
+views2
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment directories
+env/
+venv/
+ENV/
+VENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# pytest cache
+.pytest_cache/
+
+# mypy cache
+.mypy_cache/
+
+# Pyre type checker
+.pyre/
+
+# Cython debug symbols
+cython_debug/
+
+# Other IDE specific files (Optional)
+.idea/
+.vscode/

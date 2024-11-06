@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Viga&display=swap');
+
+.block-container {
+  padding-top: 1rem;
+  padding-bottom: 0rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+[data-testid="stSidebarNav"]::before {
+  content: "booklore";
+  margin-left: 30px;
+  margin-top: 0px;
+  font-size: 40px;
+  position: relative;
+  top: -30px;
+  color: #A07955;
+  font-family: 'Viga';
+}
+
+h1 {
+  font-family: 'Quicksand';
+  font-weight: normal;
+  color: #A07955
+}
+
+h3 {
+  font-size: 24px;
+}
+
+body {
+  font-family: 'Quicksand';
+  color: "#31333F"
+}

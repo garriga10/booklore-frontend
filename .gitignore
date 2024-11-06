@@ -1,6 +1,6 @@
 .python-version
 .streamlit/secrets.toml
-booklore_app.egg-info
+booklore.egg-info
 views2
 .devcontainer
 

@@ -1,6 +1,0 @@
-Metadata-Version: 2.1
-Name: booklore
-Version: 0.0.0
-Summary: booklore app project
-Requires-Dist: streamlit
-Requires-Dist: requests

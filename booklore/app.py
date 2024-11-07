@@ -14,8 +14,7 @@ st.markdown(background_image_style(st.secrets['BACKGROUND_IMG']), unsafe_allow_h
 search = st.Page(
     page= "views/search.py",
     title= "Search",
-    icon= "🔍",
-    default= True
+    icon= "🔍"
 )
 
 library = st.Page(
@@ -33,7 +32,8 @@ upload = st.Page(
 discover = st.Page(
     page= "views/discover.py",
     title= "Explore",
-    icon= "🧭"
+    icon= "🧭",
+    default= True
 )
 
 about = st.Page(

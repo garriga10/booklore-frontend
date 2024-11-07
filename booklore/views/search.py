@@ -55,20 +55,21 @@ if search_button and query:
         result.info(f"**{len(search_results)}** books found. Which one are you looking for?")
         st.write("")
         for book in search_results:
-            book_id = book.get('bookId', '') # Get book id
-            title = book.get("title", "No Title") # Get title
+            book_id = book.get('bookId', '')
+            title = book.get("title", "No Title")
 
             gcol1, gcol2 = st.columns([4, 1])
 
             with gcol1:
                 st.subheader(title)
+                result_add = st.empty()
 
             with gcol2:
                 add_button = st.button(
                     "Add to My Library",
                     key=book_id,
                     on_click= add_to_library,
-                    args=(book_id,),
+                    args=(book_id, result_add,),
                     type= 'primary'
                 )
             st.write("---")

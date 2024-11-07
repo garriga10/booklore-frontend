@@ -27,13 +27,13 @@ def fetch_api_book_suggest(query, url):
         return []
 
 # Function to add books to the library
-def add_to_library(book_id):
+def add_to_library(book_id, placeholder):
     # Check if the book is already in the library
     if book_id not in st.session_state.library:
         st.session_state.library.append(book_id)
-        st.success("Book added to your library!")
+        placeholder.success("Book added to your library!")
     else:
-        st.warning("This book is already in your library.")
+        placeholder.warning("This book is already in your library.")
 
 
 @st.cache_data

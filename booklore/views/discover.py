@@ -86,23 +86,17 @@ if search_button and query:
 if st.session_state.sel_book_id:
     book_details = fetch_api_book_suggest(st.session_state.sel_book_id, url = f"{API_URL}/model-suggest")
     if book_details:
-        # Convert suggestions list to a DataFrame
-        #df = pd.DataFrame(book_details)
-        st.write("---")
-        #st.write(df)
-        # Loop over each suggestion and display its information
+        st.write("")
         for index, book in enumerate(book_details, start= 1):
             scol1, scol2 = st.columns([6, 1])
-
             with scol1:
-                st.caption(f"*Distance: {book['distance']:.4f}*")
-                st.subheader(f"{book['title']}")
-                st.write(f"{book['author']}")
-            #with st.expander("View detail"):
-            #st.write(f"Publisher: {book['publisher']}")
-            #st.write(f"Rating: {book['rating']}")
+                star = "⭐" * int(round(book.get('rating', 0)))
+                st.caption(f"Rating: {book.get('rating', '-')}")
+                st.write(f"{star}")
+                st.subheader(f"{book.get('title', 'Not found')}")
+                st.write(f"{book.get('author', 'Not found')}")
             with scol2:
-                st.write("")
-                st.metric("Rating", f"{book['rating']}")
-            #st.write("---")
+                st.image(book.get("coverImg", {}), width= 100)
+            with st.expander("Description"):
+                st.write(f"{book.get('description', 'No details')}")
             st.divider()

@@ -32,3 +32,8 @@ body {
   font-family: 'Quicksand';
   color: "#31333F"
 }
+
+.stExpander {
+  background-color: #EEEEEC;
+  border-radius: 10px;
+}

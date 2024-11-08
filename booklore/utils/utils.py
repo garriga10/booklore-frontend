@@ -1,6 +1,7 @@
 import requests
 import streamlit as st
 import base64
+from bigquery import save_book
 
 # Function to fecth list of books from a user query
 def fetch_api_books(query, url):
@@ -30,7 +31,9 @@ def fetch_api_book_suggest(query, url):
 def add_to_library(book_id, placeholder):
     # Check if the book is already in the library
     if book_id not in st.session_state.library:
-        st.session_state.library.append(book_id)
+        #st.session_state.library.append(book_id)
+        save_book(st.session_state.username, book_id)
+        del st.session_state['library']
         placeholder.success("Book added to your library!")
     else:
         placeholder.warning("This book is already in your library.")

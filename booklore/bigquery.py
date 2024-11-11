@@ -12,7 +12,6 @@ credentials_dict = st.secrets["gcp_service_account"]
 credentials = service_account.Credentials.from_service_account_info(credentials_dict)
 client = bigquery.Client(credentials=credentials, project=credentials.project_id)
 
-
 # Helper functions
 def add_user(username, password):
     query = f"""

@@ -3,6 +3,7 @@
 booklore.egg-info
 views2
 .devcontainer
+google/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

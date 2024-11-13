@@ -2,12 +2,11 @@ import streamlit as st
 import requests
 
 from utils.utils import fetch_api_books, add_to_library
-from bigquery import get_books
 
 if "logged_in" not in st.session_state or not st.session_state.logged_in:
     st.write("")
     st.write("")
-    st.warning("Please, log in to access")
+    st.warning("Log in to access")
 else:
 
     # Read API url from secrets
@@ -15,12 +14,7 @@ else:
 
     # Function to clean variable in session_state
     def clear_search():
-        st.session_state.library = None
         st.session_state['search_text_input'] = ''
-
-    # Initialize session state for library if not already done
-    if 'library' not in st.session_state:
-        st.session_state['library'] = get_books(st.session_state.username)
 
     # Initialize session state for the input field if it doesn't exist
     if 'search_text_input' not in st.session_state:
@@ -69,14 +63,13 @@ else:
 
                 with gcol1:
                     st.subheader(title)
-                    result_add = st.empty()
 
                 with gcol2:
                     add_button = st.button(
                         "Add to My Library",
-                        key=book_id,
+                        key= book_id,
                         on_click= add_to_library,
-                        args=(book_id, result_add,),
+                        args= (book_id,),
                         type= 'primary'
                     )
                 st.write("---")

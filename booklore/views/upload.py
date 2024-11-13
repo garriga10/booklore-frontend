@@ -6,7 +6,7 @@ from utils.utils import fetch_api_books, add_to_library
 if "logged_in" not in st.session_state or not st.session_state.logged_in:
     st.write("")
     st.write("")
-    st.warning("Please, log in to access")
+    st.warning("Log in to access")
 else:
     # Read API url from secrets
     API_URL = st.secrets['API_URL']

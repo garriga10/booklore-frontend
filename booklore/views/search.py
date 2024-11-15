@@ -70,7 +70,7 @@ else:
                             "",
                             key= book_id,
                             on_click= add_to_library,
-                            args= (book_id,),
+                            args= (book_id, f"{API_URL}/book-info", ),
                             type= 'primary',
                             help= "Add this book to your library",
                             icon= ":material/add:",

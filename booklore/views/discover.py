@@ -30,7 +30,7 @@ with pcols[0]:
 
     with st.container(border= True):
         # Create two columns reduce space of search bar
-        qcol1, qcol2, qcol3 = st.columns([5, 1, 1])
+        qcol1, qcol2, qcol3= st.columns([5, 1, 1])
 
         with qcol1:
             # Text input for title search
@@ -42,9 +42,8 @@ with pcols[0]:
                 key= 'dis_text_input'
             )
 
-        # Place buttons in separate columns
         with qcol2:
-            # Button to searach button. On click removes any book id already selected
+            # Search button. On click removes any book id already selected
             search_button = st.button(
                 "",
                 key= "search",
@@ -53,6 +52,7 @@ with pcols[0]:
                 use_container_width= True
             )
         with qcol3:
+            # Clear results
             clear_button = st.button(
                 "",
                 key= "clear",
@@ -99,7 +99,7 @@ if search_button and query:
 
 # If a book has been selected, fetch and display its details
 if st.session_state.sel_book_id:
-    book_details = fetch_api_book_suggest(st.session_state.sel_book_id, url = f"{API_URL}/model-suggest")
+    book_details = fetch_api_book_suggest(st.session_state.sel_book_id, url = f"{API_URL}/DL_model-suggest")
     if book_details:
         st.write("")
         for index, book in enumerate(book_details, start= 1):

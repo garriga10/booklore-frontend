@@ -45,9 +45,23 @@ with pcols[0]:
         # Place buttons in separate columns
         with qcol2:
             # Button to searach button. On click removes any book id already selected
-            search_button = st.button("", key= "search", type= 'primary', icon= ":material/search:", use_container_width= True)
+            search_button = st.button(
+                "",
+                key= "search",
+                type= 'primary',
+                icon= ":material/search:",
+                use_container_width= True
+            )
         with qcol3:
-            clear_button = st.button("", key= "clear", on_click= clear_search, type= 'primary', icon= ":material/delete:", use_container_width = True)
+            clear_button = st.button(
+                "",
+                key= "clear",
+                on_click= clear_search,
+                type= 'primary',
+                icon= ":material/delete:",
+                help= "Clear results",
+                use_container_width = True
+            )
 
         result = st.empty()
 
@@ -56,30 +70,30 @@ if search_button and query:
         with st.spinner("Finding books..."):
             search_results = fetch_api_books(query, url = f"{API_URL}/recommendations")
         if isinstance(search_results, list):
-            result.info(f"**{len(search_results)}** books found")
+            result.info(f"**{len(search_results)}** books found that matches your query. Select one to get a your suggested list!")
             st.write("")
             for book in search_results:
                 book_id = book.get('bookId', '') # Get book id
                 title = book.get("title", "No Title") # Get title
 
-                gcol1, gcol2 = st.columns([4, 1])
+                with st.container(border= True):
+                    gcol1, gcol2 = st.columns([10, 1])
 
-                with gcol1:
-                    st.subheader(title)
-                    #st.write(book_id)
+                    with gcol1:
+                        st.subheader(title)
 
-                with gcol2:
-                    sel_button = st.button(
-                        "Get recommendations",
-                        key= book_id,
-                        on_click= sel_book,
-                        args= (book_id,),
-                        type= 'primary'
-                    )
-                    #if sel_book:
-                        #st.session_state.sel_book_id = book_id
-                        #book_details = fetch_api_book_suggest(query)
-                st.write("---")
+                    with gcol2:
+                        sel_button = st.button(
+                            "",
+                            key= book_id,
+                            on_click= sel_book,
+                            args= (book_id,),
+                            type= 'primary',
+                            icon= ":material/explore:",
+                            help= "Get recommendatios for this book",
+                            use_container_width= True
+                        )
+            st.write("")
         else:
             result.warning("No books found.")
 
@@ -89,15 +103,16 @@ if st.session_state.sel_book_id:
     if book_details:
         st.write("")
         for index, book in enumerate(book_details, start= 1):
-            scol1, scol2 = st.columns([6, 1])
-            with scol1:
-                star = "⭐" * int(round(book.get('rating', 0)))
-                st.caption(f"Rating: {book.get('rating', '-')}")
-                st.write(f"{star}")
-                st.subheader(f"{book.get('title', 'Not found')}")
-                st.write(f"{book.get('author', 'Not found')}")
-            with scol2:
-                st.image(book.get("coverImg", {}), width= 100)
-            with st.expander("Description"):
-                st.write(f"{book.get('description', 'No details')}")
-            st.divider()
+            with st.container(border= True):
+                scol1, scol2 = st.columns([6, 1])
+                with scol1:
+                    star = "⭐" * int(round(book.get('rating', 0)))
+                    st.caption(f"Rating: {book.get('rating', '-')}")
+                    st.write(f"{star}")
+                    st.subheader(f"{book.get('title', 'Not found')}")
+                    st.write(f"{book.get('author', 'Not found')}")
+                with scol2:
+                    st.image(book.get("coverImg", {}), width= 100)
+                with st.expander("Description"):
+                    st.write(f"{book.get('description', 'No details')}")
+            #st.divider()

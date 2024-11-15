@@ -64,7 +64,6 @@ def add_to_library(book_id):
     """
 
     # Check if the book is already in the library
-    print(st.session_state.library)
     if book_id not in [book['book_id'] for book in st.session_state.library]:
         options = ['Read', 'I want to read it']
         book_type = st.radio("Select", options, label_visibility= "collapsed")

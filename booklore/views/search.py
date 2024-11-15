@@ -59,19 +59,22 @@ else:
                 book_id = book.get('bookId', '')
                 title = book.get("title", "No Title")
 
-                gcol1, gcol2 = st.columns([4, 1])
+                with st.container(border= True):
+                    gcol1, gcol2 = st.columns([10, 1])
 
-                with gcol1:
-                    st.subheader(title)
+                    with gcol1:
+                        st.subheader(title)
 
-                with gcol2:
-                    add_button = st.button(
-                        "Add to My Library",
-                        key= book_id,
-                        on_click= add_to_library,
-                        args= (book_id,),
-                        type= 'primary'
-                    )
-                st.write("---")
+                    with gcol2:
+                        add_button = st.button(
+                            "",
+                            key= book_id,
+                            on_click= add_to_library,
+                            args= (book_id,),
+                            type= 'primary',
+                            help= "Add this book to your library",
+                            icon= ":material/add:",
+                            use_container_width= True
+                        )
         else:
             result.warning("No books found.")

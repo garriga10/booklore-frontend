@@ -21,13 +21,14 @@ if 'dis_text_input' not in st.session_state:
 if 'sel_book_id' not in st.session_state:
     st.session_state.sel_book_id = None
 
-pcols = st.columns([5, 1])
+pcols = st.columns([5, 2])
 
 with pcols[0]:
     # Set title and subtitle of the page
     st.title("Explore")
     st.markdown("*Find book recommendations inspired by your chosen title*")
-    with st.form('test'):
+
+    with st.container(border= True):
         # Create two columns reduce space of search bar
         qcol1, qcol2, qcol3 = st.columns([5, 1, 1])
 
@@ -44,9 +45,9 @@ with pcols[0]:
         # Place buttons in separate columns
         with qcol2:
             # Button to searach button. On click removes any book id already selected
-            search_button = st.form_submit_button("Search", type= 'primary')
+            search_button = st.button("", key= "search", type= 'primary', icon= ":material/search:", use_container_width= True)
         with qcol3:
-            clear_button = st.form_submit_button("Clear", on_click= clear_search, type= 'primary')
+            clear_button = st.button("", key= "clear", on_click= clear_search, type= 'primary', icon= ":material/delete:", use_container_width = True)
 
         result = st.empty()
 

@@ -21,7 +21,7 @@ else:
         st.session_state['search_text_input'] = ''
 
     # Create 2 columns in the page
-    pcols = st.columns([5, 1])
+    pcols = st.columns([5, 2])
 
     with pcols[0]:
         # Set title and subtitle of the page
@@ -29,7 +29,7 @@ else:
         # Set subtitle
         st.markdown("*Find books and add them to your library*")
         # Create a search form
-        with st.form('searchbar'):
+        with st.container(border= True):
             # Create 4 columns to have all the inputs in one line
             qcol1, qcol2, qcol3 = st.columns([5, 1, 1])
 
@@ -43,9 +43,9 @@ else:
                     key= 'search_text_input'
                 )
             with qcol2:
-                search_button = st.form_submit_button("Search", type= 'primary')
+                search_button = st.button("", key= "search", type= 'primary', icon= ":material/search:", use_container_width= True)
             with qcol3:
-                clear_button = st.form_submit_button("Clear", on_click= clear_search, type= 'primary')
+                clear_button = st.button("", key= "clear", on_click= clear_search, type= 'primary', icon= ":material/delete:", use_container_width = True)
 
             result = st.empty()
 

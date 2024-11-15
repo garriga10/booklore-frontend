@@ -21,7 +21,7 @@ else:
         st.session_state['search_text_input'] = ''
 
     # Create 2 columns in the page
-    pcols = st.columns([5, 1])
+    pcols = st.columns([5, 2])
 
     with pcols[0]:
         # Set title and subtitle of the page
@@ -29,7 +29,7 @@ else:
         # Set subtitle
         st.markdown("*Find books and add them to your library*")
         # Create a search form
-        with st.form('searchbar'):
+        with st.container(border= True):
             # Create 4 columns to have all the inputs in one line
             qcol1, qcol2, qcol3 = st.columns([5, 1, 1])
 
@@ -43,9 +43,9 @@ else:
                     key= 'search_text_input'
                 )
             with qcol2:
-                search_button = st.form_submit_button("Search", type= 'primary')
+                search_button = st.button("", key= "search", type= 'primary', icon= ":material/search:", use_container_width= True)
             with qcol3:
-                clear_button = st.form_submit_button("Clear", on_click= clear_search, type= 'primary')
+                clear_button = st.button("", key= "clear", on_click= clear_search, type= 'primary', icon= ":material/delete:", use_container_width = True)
 
             result = st.empty()
 
@@ -59,19 +59,22 @@ else:
                 book_id = book.get('bookId', '')
                 title = book.get("title", "No Title")
 
-                gcol1, gcol2 = st.columns([4, 1])
+                with st.container(border= True):
+                    gcol1, gcol2 = st.columns([10, 1])
 
-                with gcol1:
-                    st.subheader(title)
+                    with gcol1:
+                        st.subheader(title)
 
-                with gcol2:
-                    add_button = st.button(
-                        "Add to My Library",
-                        key= book_id,
-                        on_click= add_to_library,
-                        args= (book_id,),
-                        type= 'primary'
-                    )
-                st.write("---")
+                    with gcol2:
+                        add_button = st.button(
+                            "",
+                            key= book_id,
+                            on_click= add_to_library,
+                            args= (book_id, f"{API_URL}/book-info", ),
+                            type= 'primary',
+                            help= "Add this book to your library",
+                            icon= ":material/add:",
+                            use_container_width= True
+                        )
         else:
             result.warning("No books found.")

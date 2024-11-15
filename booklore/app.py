@@ -1,6 +1,9 @@
 import streamlit as st
-from utils.utils import background_image_style
+from utils.utils import background_image_style, load_library
 from bigquery import add_user, authenticate_user, get_library
+
+# Read API url from secrets
+API_URL = st.secrets['API_URL']
 
 # Set page configuration
 st.set_page_config(
@@ -61,21 +64,24 @@ if not st.session_state.logged_in:
     choice = st.sidebar.selectbox("Menu", menu, label_visibility= 'collapsed')
 
     if choice == "Login":
+        # Input for user and password
         username = st.sidebar.text_input("Username", placeholder= "Username", label_visibility= 'collapsed')
         password = st.sidebar.text_input("Password", type="password", placeholder= "Password", label_visibility= 'collapsed')
 
+        # Authenticate is user and password are correct
         if st.sidebar.button("Login"):
             with st.spinner():
                 if authenticate_user(username, password):
                     st.session_state.logged_in = True
                     st.session_state.username = username
                     st.sidebar.success(f"Welcome {username}")
-                    st.session_state['library'] = get_library(st.session_state.username)
-                    st.rerun()
+                    st.session_state['library'] = get_library(st.session_state.username) # Load library of the user
+                    st.rerun() # Rerun page
                 else:
                     st.sidebar.error("Invalid Username/Password")
 
     elif choice == "Sign Up":
+        # Input for user and password
         new_user = st.sidebar.text_input("Create a new account", placeholder= "Username", max_chars= 12)
         new_password = st.sidebar.text_input("Password", type="password", placeholder= "Password", max_chars= 20, label_visibility= 'collapsed')
 

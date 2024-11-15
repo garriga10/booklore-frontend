@@ -25,9 +25,13 @@ else:
         # Set title and subtitle of the page
         st.title("Upload")
         st.markdown("*Upload a picture of the cover of a book*")
-        with st.form('test'):
+        with st.container(border= True):
             picture = st.camera_input(
                 "Take a picture",
                 label_visibility= 'collapsed'
             )
-            search_button = st.form_submit_button("Search", type= 'primary')
+            search_button = st.button(
+                "Search",
+                type= 'primary',
+                use_container_width = True
+            )

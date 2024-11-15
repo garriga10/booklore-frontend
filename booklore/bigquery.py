@@ -69,7 +69,7 @@ def authenticate_user(username, password):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-def save_book(username, book_id, book_type, book_date=None, book_comment=None):
+def save_book(username, book_id, book_type, book_title, book_author, book_date=None, book_comment=None, book_global_rating= None, book_description= None, book_cover_img=None):
     """
     Add a new book to the data base
 
@@ -77,15 +77,20 @@ def save_book(username, book_id, book_type, book_date=None, book_comment=None):
     - username: user login
     - book_id: id of the book
     - book_type: Read / I want to read it
+    - book_title: title of the book
+    - book_author: author of the book
     - book_date: read date
     - book_comment: comment of the book
+    - book_global_rating: global rating of the book
+    - book_description: description of the book
+    - book_cover_img: url of the image of the cover of the book
 
     Don't return anything
     """
 
     query = """
-    INSERT INTO `booklore_db.libraries` (user_login, book_id, book_type, book_date, book_comment)
-    VALUES (@username, @book_id, @book_type, @book_date, @book_comment)
+    INSERT INTO `booklore_db.libraries` (user_login, book_id, book_type, book_date, book_comment, book_title, book_author, book_global_rating, book_description, book_cover_img)
+    VALUES (@username, @book_id, @book_type, @book_date, @book_comment, @book_title, @book_author, @book_global_rating, @book_description, @book_cover_img)
     """
 
     # Configure query parameters
@@ -96,6 +101,11 @@ def save_book(username, book_id, book_type, book_date=None, book_comment=None):
             bigquery.ScalarQueryParameter("book_type", "STRING", book_type),
             bigquery.ScalarQueryParameter("book_date", "DATE", book_date if book_type == 'Read' else None),
             bigquery.ScalarQueryParameter("book_comment", "STRING", book_comment if book_type == 'Read' else None),
+            bigquery.ScalarQueryParameter("book_title", "STRING", book_title),
+            bigquery.ScalarQueryParameter("book_author", "STRING", book_author),
+            bigquery.ScalarQueryParameter("book_global_rating", "FLOAT", book_global_rating),
+            bigquery.ScalarQueryParameter("book_description", "STRING", book_description),
+            bigquery.ScalarQueryParameter("book_cover_img", "STRING", book_cover_img)
         ]
     )
 

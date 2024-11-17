@@ -20,13 +20,11 @@ st.write(
     non placerat. Mauris dolor leo, dictum eu laoreet eleifend, molestie at
     dolor. Phasellus rutrum urna id semper ornare.
 
-    Donec sagittis rhoncus dictum. Praesent sed lobortis lorem, sed
-    venenatis tellus. Sed nunc sapien, pharetra vitae luctus in, posuere
-    euismod quam. Sed dapibus nibh et aliquet fringilla. Phasellus a
-    bibendum elit. Mauris tincidunt semper lacus eget mollis. Sed dapibus
-    leo ut augue cursus, ac elementum ex ultricies. Ut nisl diam, tincidunt
-    nec lectus vel, egestas mattis ligula. Morbi finibus fermentum varius.
-    Mauris laoreet commodo lacus et tempor. Donec id nisl pharetra felis
-    tempor porttitor. Fusce porta libero ut dui porta suscipit.
+    - Jonathan Bobo
+    - Gina Buckley
+    - Victor Loiseau
+    - Joan Garriga
+    - Felipe Saliba
     """
 )
+st.write("")

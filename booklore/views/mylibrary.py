@@ -43,6 +43,7 @@ else:
                             st.image("https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg", width=100)
                     with st.expander("Comments"):
                         st.write(f"{book.get('book_comment', 'No comments')}")
+            st.write("")
         else:
             st.info("*Your library is empty...*")
 
@@ -83,6 +84,7 @@ else:
                                 st.image("https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg", width=100)
                         with st.expander("Description"):
                             st.write(f"{book.get('book_description', 'No description')}")
+                st.write("")
             else:
                 st.info("Your whishlist is empty")
         else:

@@ -118,8 +118,12 @@ def add_to_library(book_id, url):
                     book_details['description'],
                     book_details['coverImg'],
                 )
-                st.success("Book added to your library!")
+                #st.success("Book added to your library!")
                 st.session_state['library'] = get_library(st.session_state.username)
+                if book_id in [book['book_id'] for book in st.session_state.library]:
+                    st.success("Book added to your library!")
+                else:
+                    st.warning("Failed to verify book addition.")
     else:
         st.warning("This book is already in your library")
 

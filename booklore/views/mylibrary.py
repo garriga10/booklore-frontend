@@ -1,8 +1,6 @@
 import streamlit as st
-import requests
 import pandas as pd
 import math
-import matplotlib.pyplot as plt
 
 # Check if user is logged in
 if "logged_in" not in st.session_state or not st.session_state.logged_in:

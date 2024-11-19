@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import pandas as pd
 import math
+import matplotlib.pyplot as plt
 
 # Check if user is logged in
 if "logged_in" not in st.session_state or not st.session_state.logged_in:
@@ -19,7 +20,6 @@ else:
     with tab1:
         # Check if library is loaded
         if st.session_state.library:
-            st.markdown("*Books in your library*")
 
             # Filter by books readed
             books_readed = pd.DataFrame(st.session_state.library)
@@ -31,8 +31,9 @@ else:
                     scol1, scol2 = st.columns([6, 1])
                     with scol1:
                         st.caption(f"{book.get('book_date', '-')}")
+                        st.write("⭐" * 5)
                         st.subheader(f"{book.get('book_title', 'Not found')}")
-                        st.write(f"{book.get('book_author', 'Not found')}")
+                        st.markdown(f"## {book.get('book_author', 'Not found')}")
                     with scol2:
                         book_cover_img = book.get("book_cover_img", None)
                         # Check if book_cover_img is not None and is a valid image URL or path
@@ -41,7 +42,7 @@ else:
                         else:
                             # Optional: Display a placeholder image
                             st.image("https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg", width=100)
-                    with st.expander("Comments"):
+                    with st.expander("Comments", icon= ":material/description:"):
                         st.write(f"{book.get('book_comment', 'No comments')}")
             st.write("")
         else:
@@ -58,7 +59,6 @@ else:
 
             # Check if there are book on the whishlist
             if not books_whishlist.empty:
-                st.markdown("*Books in your whishlist*")
 
                 # Iterate over books to fetch details
                 for index, book in books_whishlist.iterrows():
@@ -70,10 +70,10 @@ else:
                                 star = "⭐" * int(round(global_rating))
                             else:
                                 star = ""
-                            st.caption(f"Global Rating: {book.get('book_global_rating', '-')}")
+                            st.caption(f"Rating: {book.get('book_global_rating', '-')}")
                             st.write(f"{star}")
                             st.subheader(f"{book.get('book_title', 'Not found')}")
-                            st.write(f"{book.get('book_author', 'Not found')}")
+                            st.markdown(f"## {book.get('book_author', 'Not found')}")
                         with scol2:
                             book_cover_img = book.get("book_cover_img", None)
                             # Check if book_cover_img is not None and is a valid image URL or path
@@ -82,7 +82,7 @@ else:
                             else:
                                 # Optional: Display a placeholder image
                                 st.image("https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg", width=100)
-                        with st.expander("Description"):
+                        with st.expander("Description", icon= ":material/description:"):
                             st.write(f"{book.get('book_description', 'No description')}")
                 st.write("")
             else:
@@ -95,5 +95,6 @@ else:
         if st.session_state.library:
             st.write("⚠️")
             st.metric("Library", len(st.session_state.library))
+
         else:
             st.info("*Your library is empty...*")

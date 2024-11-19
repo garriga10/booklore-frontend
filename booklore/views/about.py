@@ -2,7 +2,7 @@ import streamlit as st
 
 st.title("About")
 
-st.write(
+st.markdown(
     """
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at aliquam
     tortor, eget cursus purus. Vestibulum porta eget lacus ut tempus.
@@ -19,12 +19,6 @@ st.write(
     Nunc nec augue at velit dignissim viverra. Quisque convallis in ante
     non placerat. Mauris dolor leo, dictum eu laoreet eleifend, molestie at
     dolor. Phasellus rutrum urna id semper ornare.
-
-    - Jonathan Bobo
-    - Gina Buckley
-    - Victor Loiseau
-    - Joan Garriga
-    - Felipe Saliba
     """
 )
 st.write("")

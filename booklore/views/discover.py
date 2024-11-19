@@ -26,9 +26,9 @@ pcols = st.columns([5, 2])
 with pcols[0]:
     # Set title and subtitle of the page
     st.title("Explore")
-    st.markdown("*Find book recommendations inspired by your chosen title*")
+    st.markdown("## Find book recommendations inspired by your chosen title")
 
-    with st.container(border= True):
+    with st.container(border= True, key= 'prova'):
         # Create two columns reduce space of search bar
         qcol1, qcol2, qcol3= st.columns([5, 1, 1])
 
@@ -110,9 +110,9 @@ if st.session_state.sel_book_id:
                     st.caption(f"Rating: {book.get('rating', '-')}")
                     st.write(f"{star}")
                     st.subheader(f"{book.get('title', 'Not found')}")
-                    st.write(f"{book.get('author', 'Not found')}")
+                    st.markdown(f"## {book.get('author', 'Not found')}")
                 with scol2:
                     st.image(book.get("coverImg", {}), width= 100)
-                with st.expander("Description"):
+                with st.expander("Description", icon= ":material/description:"):
                     st.write(f"{book.get('description', 'No details')}")
-            #st.divider()
+        st.write("")

@@ -24,7 +24,7 @@ else:
     with pcols[0]:
         # Set title and subtitle of the page
         st.title("Upload")
-        st.markdown("*Upload a picture of the cover of a book*")
+        st.markdown("## Upload a picture of the cover of a book")
         with st.container(border= True):
             picture = st.camera_input(
                 "Take a picture",

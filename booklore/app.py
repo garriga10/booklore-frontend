@@ -16,38 +16,43 @@ with open('www/style.css') as css:
     st.markdown(f"<style>{css.read()}<style>", unsafe_allow_html= True)
 
 # Add background image
-st.markdown(background_image_style(st.secrets['BACKGROUND_IMG']), unsafe_allow_html=True)
+#st.markdown(background_image_style(st.secrets['BACKGROUND_IMG']), unsafe_allow_html=True)
 
 # Define pages
 search = st.Page(
     page= "views/search.py",
     title= "Search",
-    icon= "🔍"
+    #icon= "🔍"
+    icon= ":material/search:",
 )
 
 library = st.Page(
     page= "views/mylibrary.py",
     title= "Library",
-    icon= "📚"
+    #icon= "📚"
+    icon= ":material/book_2:",
 )
 
 upload = st.Page(
     page= "views/upload.py",
     title= "Upload",
-    icon= "📸"
+    #icon= "📸",
+    icon= ":material/photo_camera:"
 )
 
 discover = st.Page(
     page= "views/discover.py",
     title= "Explore",
-    icon= "🧭",
+    #icon= "🧭",
+    icon= ":material/explore:",
     default= True
 )
 
 about = st.Page(
     page= "views/about.py",
     title= "About",
-    icon= "🎓"
+    #icon= "🎓"
+    icon= ":material/school:"
 )
 
 # Create navigation structure
@@ -69,7 +74,7 @@ if not st.session_state.logged_in:
         password = st.sidebar.text_input("Password", type="password", placeholder= "Password", label_visibility= 'collapsed')
 
         # Authenticate is user and password are correct
-        if st.sidebar.button("Login"):
+        if st.sidebar.button("Login", key= "login"):
             with st.spinner():
                 if authenticate_user(username, password):
                     st.session_state.logged_in = True
@@ -89,7 +94,7 @@ if not st.session_state.logged_in:
             add_user(new_user, new_password)
             st.sidebar.success("Account created successfully! Please login.")
 else:
-    st.sidebar.write(f"Welcome **{st.session_state.username}**!")
+    st.sidebar.write(f"Welcome **:green[{st.session_state.username}]**!")
     if st.sidebar.button("Log out"):
         st.session_state.clear()
         st.rerun()

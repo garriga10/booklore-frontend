@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Viga&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Viga&display=swap'); */
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Viga&display=swap");
+
 
 .block-container {
-  padding-top: 1rem;
+  padding-top: 2rem;
   padding-bottom: 0rem;
   padding-left: 5rem;
   padding-right: 5rem;
@@ -14,18 +16,43 @@
   font-size: 40px;
   position: relative;
   top: -30px;
-  color: #A07955;
-  font-family: 'Viga';
+  color: #31333F;
+  font-family: 'Epilogue';
+  font-weight: normal;
+  text-decoration: overline underline;
 }
 
 h1 {
-  font-family: 'Quicksand';
+  font-family: 'Epilogue';
   font-weight: normal;
   color: #A07955
 }
 
+h2 {
+  font-family: 'Epilogue';
+  font-weight: normal;
+  font-size: 14px;
+  padding-top: 0rem;
+}
+
 h3 {
+  font-family: 'Epilogue';
+  font-weight: normal;
+  color:#31333F;
   font-size: 24px;
+  top: -20px;
+}
+
+.stMarkdown p {
+  font-family: 'Quicksand';
+  color: "#31333F";
+  font-size: 14px;
+}
+
+.stAlertContainer p {
+  font-family: 'Quicksand';
+  color: "#31333F";
+  font-size: 14px;
 }
 
 body {
@@ -34,6 +61,38 @@ body {
 }
 
 .stExpander {
-  background-color: #EEEEEC;
+  background-color: #FFFFFF;
   border-radius: 10px;
+}
+
+.stExpander p {
+  font-family: 'Quicksand';
+}
+
+button[data-baseweb= "tab"][aria-selected= "false"] div[data-testid= "stMarkdownContainer"] p {
+  color: #31333F;
+  font-family: 'Epilogue';
+  font-size: 16px;
+}
+
+button[data-baseweb= "tab"][aria-selected= "true"] div[data-testid= "stMarkdownContainer"] p {
+  color: #A07955;
+  font-family: 'Epilogue';
+  font-size: 16px;
+}
+
+.stSelectbox div[data-baseweb= "select"] > div:first-child {
+  font-family: 'Quicksand';
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.stButton p {
+  font-family: 'Quicksand';
+  font-size: 14px;
+  font-weight: bold;
+}
+
+[aria-label= "dialog"] div[data-testid= "stMarkdownContainer"] p {
+  font-family: "Quicksand";
 }

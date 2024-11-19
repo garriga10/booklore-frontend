@@ -27,7 +27,7 @@ else:
         # Set title and subtitle of the page
         st.title("Search")
         # Set subtitle
-        st.markdown("*Find books and add them to your library*")
+        st.markdown("## Find books and add them to your library")
         # Create a search form
         with st.container(border= True):
             # Create 4 columns to have all the inputs in one line
